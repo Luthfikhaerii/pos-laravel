@@ -14,4 +14,5 @@ class Transaction_item extends Model
         'product_id',
         'amount',
     ];
+
 }
