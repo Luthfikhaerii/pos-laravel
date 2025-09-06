@@ -18,4 +18,21 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/order', function () {
+    return view('order');
+});
+Route::get('/history', function () {
+    return view('history');
+});
+Route::get('/report', function () {
+    return view('report');
+});
+Route::get('/product', function () {
+    return view('product');
+});
+Route::get('/add_product', function () {
+    return view('add_product');
+});
+Route::get('/login', function () {
+    return view('login');
+});
