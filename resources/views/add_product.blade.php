@@ -10,11 +10,14 @@
 <body>
     <div class="flex">
         @include('components.sidebar')
-        <div>
+        <section class="w-full flex-1">
+            <div class="h-20 flex items-center border-b-2 border-gray-200 w-full">
+                <p class="ml-8 text-2xl font-bold text-[#585A5C]">Add Product</p>
+           </div>
             <h1 class="text-3xl font-bold underline">Welcome to the Dashboard</h1>
              <p class="font-bold">This is a simple dashboard page.</p>
             <p class="bg-black">You can customize it as needed.</p>
-        </div>
+        </section>
     </div>
     
 </body>

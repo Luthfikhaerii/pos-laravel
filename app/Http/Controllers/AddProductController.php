@@ -4,16 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class AddProductController extends Controller
 {
     public function index(){
-        $data = Product::all();
-        return view('product', compact('data'));
+        return view('add_product');
     }
 
     public function create(Request $request) {
         $data = $request->all();
-        print_r($data);
         Product::create([
             'name_product' => $data['name_product'],
             'category' => $data['category'],

@@ -31,7 +31,15 @@
                     <p class="font-semibold text-white">+ Add Product</p>
                 </div>
                 <div>
-                    <x-card_product price="20000"/>
+                    @foreach ( $products as $product )
+                        <x-card_product 
+                            img="{{ asset('img/contoh.jpg') }}" 
+                            title="{{ $product->name }}" 
+                            price="{{ $product->price }}"
+                            editUrl="{{ route('product.edit', $product->id) }}"
+                            deleteUrl="{{ route('product.destroy', $product->id) }}"
+                        />    
+                    @endforeach
                 </div>
            </div>
         </section>

@@ -12,12 +12,12 @@ class card_product extends Component
      * @return void
      */
     public $price;
-    public $title;
+    public $name_product;
     public $img;
     public $editUrl;
     public $deleteUrl;
 
-    public function __construct(String $price,String $img, String $title, String $editUrl, String $deleteUrl)
+    public function __construct(String $price,String $img, String $name_product, String $editUrl, String $deleteUrl)
     {
        $this->price = $price;
     }
@@ -29,6 +29,12 @@ class card_product extends Component
      */
     public function render()
     {
-        return view('components.card_product',compact('price'));
+        return view('components.card_product',[
+            'name_product'=>$this->name_product,
+            'price'=>$this->price,
+            'img'=>$this->img,
+            'editUrl'=>$this->editUrl,
+            'deleteUrl'=>$this->deleteUrl
+        ]);
     }
 }
