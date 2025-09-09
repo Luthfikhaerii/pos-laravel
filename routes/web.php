@@ -45,5 +45,7 @@ Route::get('/get_product',[App\Http\Controllers\ProductController::class,'get'])
 
 Route::post('/add_product',[AddProductController::class,'create'])->name('add_product.create');
 
-Route::put('/update_product/{id}',[App\Http\Controllers\ProductController::class,'update']);
+Route::put('/update_product/{id}',[App\Http\Controllers\ProductController::class,'update'])->name('product.update');
+
+Route::get('/delete_product/{id}',[App\Http\Controllers\ProductController::class,'delete'])->name('product.delete');
 

@@ -17,8 +17,9 @@
                 <p class="ml-8 text-2xl font-bold text-[#585A5C]">Add Product</p>
             </div>
             <div class="bg-gray-100 flex-1">
-                <form class=" bg-white p-8 m-8 rounded-lg shadow-md space-y-6" method="POST" action="{{ route('add_product.create') }}" onsubmit="alert('Add new product!')" enctype="multipart/form-data">
+                <form class=" bg-white p-8 m-8 rounded-lg shadow-md space-y-6" method="POST" action="{{ route('product.update',['id'=>request()->route('id')]) }}" onsubmit="alert('Update product!')" enctype="multipart/form-data">
                      @csrf
+                     @method('PUT')
                     <label for="file-upload"
                         class="flex flex-col items-center justify-center w-24 h-24 border-2 border-dashed rounded-lg cursor-pointer hover:bg-gray-100">
                         <svg class="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
@@ -32,29 +33,29 @@
 
                     <div>
                         <label for="small-input" class="block mb-2 text-lg font-semibold text-gray-600">Name Product</label>
-                        <input type="text" name="name_product" placeholder="Input title..." id="small-input"
+                        <input type="text" name="name_product" value="{{ $data->name_product }}" placeholder="Input title..." id="small-input"
                             class="block w-96 h-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500">
                     </div>
 
                     <label for="category" class="block mb-2 text-lg font-semibold text-gray-600">Category</label>
                     <select id="category" name="category"
-                        class="block w-96 p-2 border border-gray-300 rounded-lg focus:ring-blue-500  bg-gray-50 focus:border-blue-500">
-                        <option value="">-- Choose --</option>
-                        <option value="food">Food</option>
-                        <option value="drink">Drink</option>
+                        class="block w-96 p-2 border border-gray-300 rounded-lg focus:ring-blue-500  bg-gray-50 focus:border-blue-500" >
+                        <option value="" >-- Choose --</option>
+                        <option value="food" {{ $data->category == 'food' ? 'selected' : '' }}>Food</option>
+                        <option value="drink" {{ $data->category == 'drink' ? 'selected' : '' }}>Drink</option>
                     </select>
                     <div>
                         <label for="small-input" class="block mb-2 text-lg font-semibold text-gray-600">Price</label>
-                        <input type="number" placeholder="Input price..." id="small-input" name="price"
+                        <input type="number" placeholder="Input price..." id="small-input" name="price" value="{{ $data->price }}"
                             class="block w-96 h-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
                         <label for="small-input" class="block mb-2 text-lg font-semibold text-gray-600">Stock</label>
-                        <input type="number" placeholder="Input stock..." id="small-input" name="stock"
+                        <input type="number" placeholder="Input stock..." id="small-input" name="stock" value="{{ $data->stock }}"
                             class="block w-96 h-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <button type="submit"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center">Submit</button>
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center">Update</button>
                 </form>
             </div>
         </section>

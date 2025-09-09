@@ -35,7 +35,7 @@
                 <div class="flex flex-wrap">
                     @foreach ( $data as $item )
                         <x-card_product  price="{{ $item->price }}" name="{{ $item->name_product }}" editUrl="{{ $item->id }}"
-                        deleteUrl="{{ $item->id }}" image="/images/kopi.png" stock="{{ $item->stock }}" />
+                        deleteUrl="{{ $item->id }}" image="{{ $item->image }}" stock="{{ $item->stock }}" />
                     @endforeach
                 </div>
               <div class="w-[30%] m-auto mt-4">{{ $data->links() }}</div>  

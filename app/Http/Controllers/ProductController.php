@@ -28,6 +28,12 @@ class ProductController extends Controller
     public function update(Request $request,$id){
         $data = $request->all();
         $product = Product::find($id);
+        if(isset($data['image'])){
+            $path = $request->file('image')->store('images','public');
+            $data['image'] = $path;
+        }else{
+            $data['image'] = $product->image;
+        }
         $product->update([
             'name_product' => $data['name_product'],
             'image' => $data['image'],
@@ -35,7 +41,13 @@ class ProductController extends Controller
             'price' => $data['price'],
             'stock' => $data['stock'],
         ]);
-        return redirect(`/edit_product/${$id}`);
+        return redirect('/edit_product/'.$id);
 
+    }
+
+    public function delete($id){
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('/product');
     }
 }
