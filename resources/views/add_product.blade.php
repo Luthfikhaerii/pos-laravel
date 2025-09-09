@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js','resources/js/add_product.js'])
 </head>
 
 <body>
@@ -17,10 +17,8 @@
                 <p class="ml-8 text-2xl font-bold text-[#585A5C]">Add Product</p>
             </div>
             <div class="bg-gray-100 flex-1">
-                <form class=" bg-white p-8 m-8 rounded-lg shadow-md space-y-6">
-                        @isset($result)
-                            <img src="img/contoh.jpg" alt="Product Image" class="w-32 h-32 mb-4 rounded-lg">
-                        @endisset
+                <form class=" bg-white p-8 m-8 rounded-lg shadow-md space-y-6" method="POST" action="{{ route('add_product.create') }}" onsubmit="alert('Add new product!')" enctype="multipart/form-data">
+                     @csrf
                     <label for="file-upload"
                         class="flex flex-col items-center justify-center w-24 h-24 border-2 border-dashed rounded-lg cursor-pointer hover:bg-gray-100">
                         <svg class="w-8 h-8 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
@@ -30,11 +28,11 @@
                         <span class="text-xs text-gray-500 mt-1">Upload</span>
                     </label>
 
-                    <input id="file-upload" name="image" type="file" class="hidden" />
+                    <input id="file-upload" name="image" type="file" id="imageInput" class="hidden" />
 
                     <div>
-                        <label for="small-input" class="block mb-2 text-lg font-semibold text-gray-600">Title</label>
-                        <input type="text" name="title" placeholder="Input title..." id="small-input"
+                        <label for="small-input" class="block mb-2 text-lg font-semibold text-gray-600">Name Product</label>
+                        <input type="text" name="name_product" placeholder="Input title..." id="small-input"
                             class="block w-96 h-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500">
                     </div>
 
@@ -42,17 +40,17 @@
                     <select id="category" name="category"
                         class="block w-96 p-2 border border-gray-300 rounded-lg focus:ring-blue-500  bg-gray-50 focus:border-blue-500">
                         <option value="">-- Choose --</option>
-                        <option value="tech">Food</option>
-                        <option value="design">Drink</option>
+                        <option value="food">Food</option>
+                        <option value="drink">Drink</option>
                     </select>
                     <div>
                         <label for="small-input" class="block mb-2 text-lg font-semibold text-gray-600">Price</label>
-                        <input type="text" placeholder="Input price..." id="small-input" name="price"
+                        <input type="number" placeholder="Input price..." id="small-input" name="price"
                             class="block w-96 h-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
                         <label for="small-input" class="block mb-2 text-lg font-semibold text-gray-600">Stock</label>
-                        <input type="text" placeholder="Input stock..." id="small-input" name="stock"
+                        <input type="number" placeholder="Input stock..." id="small-input" name="stock"
                             class="block w-96 h-10 p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <button type="submit"

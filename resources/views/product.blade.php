@@ -19,13 +19,13 @@
             </div>
             <div class="flex w-full px-4">
                 <div
-                    class="w-36 h-14 flex items-center border-b-4 border-[#4C81F1] cursor-pointer text-[#4C81F1] category-1">
+                    class="w-36 h-14 flex items-center border-b-4 border-[#4C81F1] cursor-pointer text-[#4C81F1] category-1" id="all">
                     <p class="text-center font-semibold m-auto">All</p>
                 </div>
-                <div class="w-36 h-14 flex items-center cursor-pointer text-[#585A5C] category-2">
+                <div class="w-36 h-14 flex items-center cursor-pointer text-[#585A5C] category-2" id="food">
                     <p class="text-center font-semibold m-auto ">Food</p>
                 </div>
-                <div class="w-36 h-14 flex items-center cursor-pointer text-[#585A5C] category-3">
+                <div class="w-36 h-14 flex items-center cursor-pointer text-[#585A5C] category-3" id="drink">
                     <p class="text-center font-semibold m-auto ">Drink</p>
                 </div>
             </div>

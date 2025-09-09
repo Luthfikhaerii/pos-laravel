@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AddProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,4 @@ Route::get('/login', function () {
 // API Route
 Route::get('/get_product',[App\Http\Controllers\ProductController::class,'get']);
 
-Route::post('/add_product',[App\Htpp\Controllers\AddProductController::class,'create']);
+Route::post('/add_product',[AddProductController::class,'create'])->name('add_product.create');

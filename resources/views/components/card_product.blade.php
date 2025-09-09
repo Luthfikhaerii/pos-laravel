@@ -2,7 +2,7 @@
     <img src="kopi.png" class="w-64 h-48 m-auto pt-5 rounded-lg"/>
 
     <div class="flex justify-between items-center px-4 pt-2">
-        <p class="text-lg font-bold line-clamp-1">{{ $name }}</p>
+        <p class="text-lg text-gray-700 font-bold line-clamp-1">{{ $name }}</p>
     </div>
 
     <div class="flex justify-between items-center px-4 pt-1 pb-2">
