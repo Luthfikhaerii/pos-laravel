@@ -7,8 +7,17 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function index(){
-        return view('product', ['data' => Product::orderBy('created_at','desc')->paginate(8)]);
+    public function index(Request $request){
+        $query = $request->query('category');
+        $data = [];
+        if ($query=="drink") {
+            $data = Product::where('category','drink')->orderBy('created_at','desc')->paginate(8);
+        }else if ($query=="food") {
+            $data = Product::where('category','food')->orderBy('created_at','desc')->paginate(8);
+        }else{
+          $data = Product::orderBy('created_at','desc')->paginate(8);
+        }
+        return view('product', compact('data'));
     }
 
     public function edit($id){

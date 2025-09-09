@@ -14,9 +14,11 @@ class AddProductController extends Controller
     public function create(Request $request) {
         $data = $request->all();
         var_dump($data);
+        $path = $request->file('image')->store('images','public');
+
         Product::create([
             'name_product' => $data['name_product'],
-            'price' => $data['image'],
+            'image' => $path,
             'category' => $data['category'],
             'price' => $data['price'],
             'stock' => $data['stock'],

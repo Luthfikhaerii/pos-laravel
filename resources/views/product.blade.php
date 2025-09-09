@@ -18,16 +18,15 @@
                 <p class="ml-8 text-2xl font-bold text-[#585A5C]">Product List</p>
             </div>
             <div class="flex w-full px-4">
-                <div
-                    class="w-36 h-14 flex items-center border-b-4 border-[#4C81F1] cursor-pointer text-[#4C81F1] category-1" id="all">
+                <a class="w-36 h-14 flex items-center cursor-pointer category-1 {{ request()->query('category') == null ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product') }}">
                     <p class="text-center font-semibold m-auto">All</p>
-                </div>
-                <div class="w-36 h-14 flex items-center cursor-pointer text-[#585A5C] category-2" id="food">
+                </a>
+                <a class="w-36 h-14 flex items-center cursor-pointer category-2 {{ request()->query('category') == 'food' ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product?category=food') }}">
                     <p class="text-center font-semibold m-auto ">Food</p>
-                </div>
-                <div class="w-36 h-14 flex items-center cursor-pointer text-[#585A5C] category-3" id="drink">
+                </a>
+                <a class="w-36 h-14 flex items-center cursor-pointer category-3 {{ request()->query('category') == 'drink' ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product?category=drink') }}">
                     <p class="text-center font-semibold m-auto ">Drink</p>
-                </div>
+                </a>
             </div>
             <div class="bg-gray-100 w-full flex-1 px-4 pb-8">
                 <a class="flex items-center rounded-lg w-40 h-10 bg-[#4C81F1] justify-center shadow-sm mx-6 mt-4 cursor-pointer" href="{{ url('/add_product') }}">
@@ -35,8 +34,8 @@
                 </a>
                 <div class="flex flex-wrap">
                     @foreach ( $data as $item )
-                        <x-card_product  price="{{ $item->price }}" name="{{ $item->name_product }}" editUrl="/products/1/edit"
-                        deleteUrl="/products/1/delete" image="/images/kopi.png" stock="{{ $item->stock }}" />
+                        <x-card_product  price="{{ $item->price }}" name="{{ $item->name_product }}" editUrl="{{ $item->id }}"
+                        deleteUrl="{{ $item->id }}" image="/images/kopi.png" stock="{{ $item->stock }}" />
                     @endforeach
                 </div>
               <div class="w-[30%] m-auto mt-4">{{ $data->links() }}</div>  

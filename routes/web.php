@@ -33,6 +33,9 @@ Route::get('/product',[App\Http\Controllers\ProductController::class,'index']);
 Route::get('/add_product', function () {
     return view('add_product');
 });
+
+Route::get('/edit_product/{id}', [App\Http\Controllers\ProductController::class,'edit']);
+
 Route::get('/login', function () {
     return view('login');
 });
@@ -41,3 +44,6 @@ Route::get('/login', function () {
 Route::get('/get_product',[App\Http\Controllers\ProductController::class,'get']);
 
 Route::post('/add_product',[AddProductController::class,'create'])->name('add_product.create');
+
+Route::put('/update_product/{id}',[App\Http\Controllers\ProductController::class,'update']);
+
