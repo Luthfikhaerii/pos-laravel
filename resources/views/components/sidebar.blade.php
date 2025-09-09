@@ -1,4 +1,4 @@
-    <div class="w-64 shadow-md border-r-sm min-h-screen h-full">
+    <div class="w-64 border-r-2 border-gray-200 border-r-sm min-h-screen">
         <p class="font-bold text-3xl text-center py-4 mb-10 mt-4">POS CAFFE</p>
         <div class="w-full m-auto px-4"> 
         <a href="/" class="block py-3 mb-2 px-4 rounded-lg {{ request()->is('/') ? 'bg-[#4C81F1]' : '' }}">

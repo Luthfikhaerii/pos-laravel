@@ -27,12 +27,16 @@ Route::get('/history', function () {
 Route::get('/report', function () {
     return view('report');
 });
-Route::get('/product', function () {
-    return view('product');
-});
+Route::get('/product',[App\Http\Controllers\ProductController::class,'index']);
+
 Route::get('/add_product', function () {
     return view('add_product');
 });
 Route::get('/login', function () {
     return view('login');
 });
+
+// API Route
+Route::get('/get_product',[App\Http\Controllers\ProductController::class,'get']);
+
+Route::post('/add_product',[App\Htpp\Controllers\AddProductController::class,'create']);
