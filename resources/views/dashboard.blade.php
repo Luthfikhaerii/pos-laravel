@@ -15,7 +15,7 @@
         @include('components.sidebar')
         <section class="flex-1 flex flex-col min-h-screen h-full">
             <div class="h-20 flex items-center border-b-2 border-gray-200 w-full">
-                <p class="ml-8 text-2xl font-bold text-[#585A5C]">Product List</p>
+                <p class="ml-8 text-2xl font-bold text-[#585A5C]">Menu</p>
             </div>
             <div class="flex w-full px-4">
                 <a class="w-36 h-14 flex items-center cursor-pointer category-1 {{ request()->query('category') == null ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product') }}">
