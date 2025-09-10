@@ -13,21 +13,24 @@ class Cart extends Component
     public $cart = [];
     public $amount_item = 0;
     public $total_price = 0;
+    public $count = 0;
 
-    protected $listeners = ['addToCart'];
+    protected $listeners = ['addToCart','test'];
 
-   public function addToCart($id, $name_product, $price,$stock){
+   public function addToCart($id, $name_product, $price,$stock,$category){
         if(isset($this->cart[$id])){
             $this->cart[$id]['amount']++;         
         } else {
-            $this->cart[$id] = [
+            $this->cart[] = [
                 'id'=>$id,
                 'name_product' => $name_product,
                 'price' => $price,
                 'stock' => $stock,
+                'category'=>$category,
                 'amount' => 1
             ];
         }
+        var_dump($this->cart);
         $this->amount_item++;
             $this->total_price += $price;
     }
@@ -85,6 +88,10 @@ class Cart extends Component
         $this->amount_item = 0;
         $this->total_price = 0;
     }
+
+    public function test($isi){
+        $this->count += $isi;
+    }
     
      public function render()
     {
@@ -92,6 +99,7 @@ class Cart extends Component
             'cart' => $this->cart,
             'amount_item' => $this->amount_item,
             'total_price' => $this->total_price,
+            'count'=> $this->count
         ]);
     }
      

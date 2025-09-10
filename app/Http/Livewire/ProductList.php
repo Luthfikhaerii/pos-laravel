@@ -8,26 +8,24 @@ use App\Models\Product;
 class ProductList extends Component
 {
 
-    public $category='';
-
-    public function mount(){
-        $this->category= request()->get('category');
+    public function add($id, $name_product, $price, $stock,$category)
+    {
+        $this->emit('addToCart', $id, $name_product, $price, $stock,$category);
     }
 
-    public function add($id, $name_product, $price, $stock)
-    {
-        $this->emit('addToCart', $id, $name_product, $price, $stock);
+    public function yow($isi){
+        $this->emit('test',$isi);
     }
 
     public function render()
     {
         $data = [];
-        if ($category == 'drink') {
-            $data = Product::where('category', 'drink')->orderBy('created_at', 'DESC')->paginate(8);
-        } else if ($category == 'food') {
-            $data = Product::where('category', 'food')->orderBy('created_at', 'DESC')->paginate(8);
+        if (request()->get('category') == 'drink') {
+            $data = Product::where('category', 'drink')->orderBy('created_at', 'DESC')->paginate(9);
+        } else if (request()->get('category') == 'food') {
+            $data = Product::where('category', 'food')->orderBy('created_at', 'DESC')->paginate(9);
         } else {
-            $data = Product::orderBy('created_at', 'DESC')->paginate(8);
+            $data = Product::orderBy('created_at', 'DESC')->paginate(9);
         }
 
         return view('livewire.product-list', compact('data'));
