@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('transaction', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name_customer');
-            $table->string('payment_method');
             $table->integer('amount_item');
             $table->integer('total_price');
             $table->date('date_transaction')->default(DB::raw('CURRENT_DATE'));

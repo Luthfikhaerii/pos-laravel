@@ -18,20 +18,22 @@
                 <p class="ml-8 text-2xl font-bold text-[#585A5C]">Menu</p>
             </div>
             <div class="flex w-full px-4">
-                <a class="w-36 h-14 flex items-center cursor-pointer category-1 {{ request()->query('category') == null ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product') }}">
+                <a class="w-36 h-14 flex items-center cursor-pointer category-1 {{ request()->query('category') == null ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/') }}">
                     <p class="text-center font-semibold m-auto">All</p>
                 </a>
-                <a class="w-36 h-14 flex items-center cursor-pointer category-2 {{ request()->query('category') == 'food' ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product?category=food') }}">
+                <a class="w-36 h-14 flex items-center cursor-pointer category-2 {{ request()->query('category') == 'food' ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/?category=food') }}">
                     <p class="text-center font-semibold m-auto ">Food</p>
                 </a>
-                <a class="w-36 h-14 flex items-center cursor-pointer category-3 {{ request()->query('category') == 'drink' ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product?category=drink') }}">
+                <a class="w-36 h-14 flex items-center cursor-pointer category-3 {{ request()->query('category') == 'drink' ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/?category=drink') }}">
                     <p class="text-center font-semibold m-auto ">Drink</p>
                 </a>
             </div>
             <div class="bg-gray-100 w-full flex-1 px-4 pb-8">
-                <a class="flex items-center rounded-lg w-40 h-10 bg-[#4C81F1] justify-center shadow-sm mx-6 mt-4 cursor-pointer" href="{{ url('/add_product') }}">
-                    <p class="font-semibold text-white">+ Add Product</p>
-                </a>
+                <div class="flex">
+                @livewire('product-list')
+                @livewire('cart')
+                </div>
+
                 {{-- <div class="flex flex-wrap">
                     @foreach ( $data as $item )
                         <x-card_product  price="{{ $item->price }}" name="{{ $item->name_product }}" editUrl="{{ $item->id }}"
