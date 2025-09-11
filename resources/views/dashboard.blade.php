@@ -20,9 +20,9 @@
                 <div class="flex">
                     <div class="w-full ">
                         <div class="h-20 flex items-center border-b-2 border-gray-200 w-full bg-white">
-                            <p class="ml-8 text-2xl font-bold text-[#585A5C]">Menu</p>
+                            <p class="ml-10 text-2xl font-bold text-[#585A5C]">Menu</p>
                         </div>
-                        <div class="flex w-full bg-white">
+                        <div class="flex w-full bg-white pl-10">
                             <a class="w-36 h-14 flex items-center cursor-pointer category-1 {{ request()->query('category') == null ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]' }}"
                                 href="{{ url('/') }}">
                                 <p class="text-center font-semibold m-auto">All</p>
@@ -40,14 +40,6 @@
                     </div>
                     @livewire('cart')
                 </div>
-
-                {{-- <div class="flex flex-wrap">
-                    @foreach ($data as $item)
-                        <x-card_product  price="{{ $item->price }}" name="{{ $item->name_product }}" editUrl="{{ $item->id }}"
-                        deleteUrl="{{ $item->id }}" image="{{ $item->image }}" stock="{{ $item->stock }}" />
-                    @endforeach
-                </div> --}}
-                {{-- <div class="w-[30%] m-auto mt-4">{{ $data->links() }}</div>   --}}
             </div>
         </section>
     </div>

@@ -14,7 +14,7 @@
         @include('components.sidebar')
         <section class="w-full flex-1 flex flex-col">
             <div class="h-20 flex items-center border-b-2 border-gray-200 w-full">
-                <p class="ml-8 text-2xl font-bold text-[#585A5C]">Add Product</p>
+                <p class="ml-10 text-2xl font-bold text-[#585A5C]">Add Product</p>
             </div>
             <div class="bg-gray-100 flex-1">
                 <form class=" bg-white p-8 m-8 rounded-lg shadow-md space-y-6" method="POST" action="{{ route('product.update',['id'=>request()->route('id')]) }}" onsubmit="alert('Update product!')" enctype="multipart/form-data">

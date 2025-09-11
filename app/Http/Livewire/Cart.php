@@ -74,7 +74,8 @@ class Cart extends Component
             foreach ($this->cart as $item) {
                 $transaction_item[] = [
                  'transaction_id' => $transaction->id,
-                 'product_id' => $item['id'],
+                 'name_product' => $item['name_product'],
+                 'price'=> $item['price'],
                  'amount' => $item['amount'],
                 ];
                 $stock_update[] = [

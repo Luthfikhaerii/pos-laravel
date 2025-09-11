@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('transaction', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('status')->default('NEW ORDER');
             $table->integer('amount_item');
             $table->integer('total_price');
             $table->date('date_transaction')->default(DB::raw('CURRENT_DATE'));

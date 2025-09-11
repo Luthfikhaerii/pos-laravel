@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use App\Models\Products;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Transaction_item;
 
 class Transaction extends Model
 {
@@ -17,8 +17,8 @@ class Transaction extends Model
         'date_transaction',
     ];
 
-    public function product(): BelongsToMany {
-        return $this->belongsToMany(Product::class);
+    public function transaction_item(): HasMany {
+        return $this->hasMany(Transaction_item::class);
     }
 
     

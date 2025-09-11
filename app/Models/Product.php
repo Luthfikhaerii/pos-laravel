@@ -20,7 +20,5 @@ class Product extends Model
        'stock',
     ];
 
-    public function transaction(): BelongsToMany {
-        return $this->belongsToMany(Transaction::class);
-    }
+
 }
