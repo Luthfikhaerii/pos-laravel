@@ -8,6 +8,7 @@
     <title>Dashboard</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite(['resources/js/product.js'])
+    @livewireStyles
 </head>
 
 <body class="min-h-screen">
@@ -18,16 +19,11 @@
                 <p class="ml-10 text-2xl font-bold text-[#585A5C]">History Order</p>
             </div>
             <div class="bg-gray-100 w-full flex-1 px-4 pb-8">
-                {{-- <div class="flex flex-wrap">
-                    @foreach ( $data as $item )
-                        <x-card_product  price="{{ $item->price }}" name="{{ $item->name_product }}" editUrl="{{ $item->id }}"
-                        deleteUrl="{{ $item->id }}" image="{{ $item->image }}" stock="{{ $item->stock }}" />
-                    @endforeach
-                </div>
-              <div class="w-[30%] m-auto mt-4">{{ $data->links() }}</div>   --}}
+                @livewire('history-list')
             </div>
         </section>
     </div>
+    @livewireScripts
 </body>
 
 </html>
