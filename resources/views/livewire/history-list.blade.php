@@ -26,17 +26,20 @@
             <p class="w-28 text-center mr-4 text-base font-bold text-gray-700">Action</p>
         </div>
 
-        <div class="w-full h-14 shadow-sm my-2 flex items-center bg-white px-4">
-            <p class="text-base font-semibold text-gray-500 ml-4 w-5 text-center">2</p>
+        @foreach ( $data as $i => $item )
+            <div class="w-full h-14 shadow-sm my-2 flex items-center bg-white px-4">
+            <p class="text-base font-semibold text-gray-500 ml-4 w-5 text-center">{{$i+1}}</p>
             <div class="w-full grid grid-cols-4 justify-center px-20 text-base font-semibold text-gray-500">
-                <p class="text-center">12-2-2025</p>
-                <p class="text-center">20:50</p>
-                <p class="text-center">2</p>
-                <p class="text-center">Rp20.000</p>
+                <p class="text-center">{{ explode(" ",$item->created_at)[0] }}</p>
+                <p class="text-center">{{ explode(" ",$item->created_at)[1] }}</p>
+                <p class="text-center">{{ $item->amount_item }}</p>
+                <p class="text-center">Rp{{ $item->total_price }}</p>
             </div>
-            <a href="#" class="h-10 w-28 bg-blue-400 rounded-lg flex items-center mr-4">
+            <a href="{{ route('history_detail.index',['id'=>$item->id]) }}" class="h-10 w-28 bg-blue-400 rounded-lg flex items-center mr-4">
                 <p class="m-auto text-center font-semibold text-white">Detail</p>
             </a>
         </div>
+        @endforeach
+        
     </div>
 </div>

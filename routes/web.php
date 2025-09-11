@@ -22,9 +22,15 @@ Route::get('/', function () {
 Route::get('/order', function () {
     return view('order');
 });
+
+// HISTORY
 Route::get('/history', function () {
     return view('history');
 });
+Route::get('/history_detail/{id}', [App\Http\Controllers\HistoryDetail::class,'index'])->name('history_detail.index');
+
+
+// REPORT
 Route::get('/report', function () {
     return view('report');
 });

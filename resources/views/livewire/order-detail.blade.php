@@ -33,6 +33,7 @@
     <div class="mb-4 mt-4">
     <select wire:change="updateStatus({{ $detail['id'] }},$event.target.value)'" id="status"
         class="block w-64 px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-base font-semibold" {{ !isset($status)?'readonly':'' }}>
+        <option value="" {{ $status==""?"selected":"" }} class="text-green-600 font-bold">Select Order</option>
         <option value="NEW ORDER" {{ $status=="NEW ORDER"?"selected":"" }} class="text-green-600 font-bold">🟢 New Order</option>
         <option value="ON COOK" {{ $status=="ON COOK"?"selected":"" }} class="text-yellow-600 font-bold">🟡 On Cook</option>
         <option value="DONE" {{ $status=="DONE"?"selected":"" }} class="text-blue-600 font-bold">🔵 Done</option>

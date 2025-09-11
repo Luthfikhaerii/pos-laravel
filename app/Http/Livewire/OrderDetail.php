@@ -11,7 +11,7 @@ class OrderDetail extends Component
     public $amount_item = 0;
     public $total_price = 0;
     public $created_at = '';
-    public $status = 'NEW ORDER';
+    public $status = '';
     protected $listeners = ['addToDetail'];
 
    public function addToDetail($id, $transaction_item, $total_price, $amount_item, $created_at,$status){
@@ -29,7 +29,7 @@ class OrderDetail extends Component
             'status'=>$status
         ]);
 
-        return redirect('/transaction');
+        return redirect('/order');
     }
 
     public function render()
