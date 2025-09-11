@@ -13,7 +13,6 @@ class Cart extends Component
     public $cart = [];
     public $amount_item = 0;
     public $total_price = 0;
-    public $count = 0;
 
     protected $listeners = ['addToCart','test'];
 
@@ -21,7 +20,7 @@ class Cart extends Component
         if(isset($this->cart[$id])){
             $this->cart[$id]['amount']++;         
         } else {
-            $this->cart[] = [
+            $this->cart[$id] = [
                 'id'=>$id,
                 'name_product' => $name_product,
                 'price' => $price,
@@ -29,10 +28,10 @@ class Cart extends Component
                 'category'=>$category,
                 'amount' => 1
             ];
-        }
-        var_dump($this->cart);
+        };
+        $this->count=$id;
         $this->amount_item++;
-            $this->total_price += $price;
+        $this->total_price += $price;
     }
 
     public function increment($id){
@@ -50,6 +49,8 @@ class Cart extends Component
     }
 
     public function remove($id){
+        $this->amount_item -=$this->cart[$id]['amount'];
+        $this->total_price -= $this->cart[$id]['price'];
         unset($this->cart[$id]);
     }
 
@@ -65,12 +66,13 @@ class Cart extends Component
             'date_transaction' => now(),
         ]);
 
+
         if(isset($transaction)) {
             $transaction_item = [];
             $stock_update = [];
 
             foreach ($this->cart as $item) {
-                $transaction_item[]= [
+                $transaction_item[] = [
                  'transaction_id' => $transaction->id,
                  'product_id' => $item['id'],
                  'amount' => $item['amount'],
@@ -78,15 +80,16 @@ class Cart extends Component
                 $stock_update[] = [
                     'id' => $item['id'],
                     'stock' => $item['stock'] - $item['amount'],
+                    'name_product' => $item['name_product'],
+                    'category' => $item['category'],
+                    'price'=> $item['price']
                 ];
            }
             Transaction_item::insert($transaction_item);
             Product::upsert($stock_update, ['id'], ['stock']);
         } 
     
-        $this->cart = [];
-        $this->amount_item = 0;
-        $this->total_price = 0;
+        return redirect('/');
     }
 
     public function test($isi){
@@ -98,8 +101,7 @@ class Cart extends Component
         return view('livewire.cart', [
             'cart' => $this->cart,
             'amount_item' => $this->amount_item,
-            'total_price' => $this->total_price,
-            'count'=> $this->count
+            'total_price' => $this->total_price
         ]);
     }
      

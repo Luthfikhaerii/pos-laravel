@@ -10,7 +10,7 @@ use App\Models\Products;
 class Transaction extends Model
 {
     use HasFactory;
-
+    protected $table = 'transaction';
     protected $fillable = [
         'amount_item',
         'total_price',
