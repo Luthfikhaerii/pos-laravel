@@ -9,6 +9,6 @@ class ReportController extends Controller
 {
     public function index(SalesChart $chart)
     {
-        return view('report.index', ['chart' => $chart]);
+        return view('report', ['chart' => $chart]);
     }
 }

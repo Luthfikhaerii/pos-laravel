@@ -31,9 +31,7 @@ Route::get('/history_detail/{id}', [App\Http\Controllers\HistoryDetail::class,'i
 
 
 // REPORT
-Route::get('/report', function () {
-    return view('report');
-});
+Route::get('/report',[\App\Http\Controllers\ReportController::class, 'index'])->name('report.index');
 Route::get('/product',[App\Http\Controllers\ProductController::class,'index']);
 
 Route::get('/add_product', function () {

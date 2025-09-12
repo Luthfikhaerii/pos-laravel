@@ -12,7 +12,6 @@
                     class="mt-1 block w-full border-gray-300 rounded-md">
             </div>
         </div>
-
     </div>
     <div>
         <div class="w-full h-14 shadow-sm my-2 flex items-center bg-white px-4 rounded-t-lg">
