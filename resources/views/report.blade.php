@@ -8,6 +8,7 @@
     <title>Dashboard</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @vite(['resources/js/product.js'])
+    @livewireStyles
 </head>
 
 <body class="min-h-screen">
@@ -29,6 +30,7 @@
                 </a>
             </div>
             <div class="bg-gray-100 w-full flex-1 px-4 pb-8">
+                @livewire('report-chart')
                 <div> 
 
                 </div>
@@ -45,6 +47,8 @@
             </div>
         </section>
     </div>
+    
+    @livewireScripts
 </body>
 
 </html>
