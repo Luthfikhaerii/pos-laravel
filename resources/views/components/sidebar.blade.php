@@ -34,7 +34,7 @@
         </a>
 
         </div>
-        <div class="border-t-2 border-gray-300 bottom-0 absolute flex items-center justify-center w-64 h-24 py-2">
+        <div class="border-gray-300 bottom-0 absolute flex items-center justify-center w-64 h-24 py-2">
             <a href="{{ route('logout_user')}}" class="py-2 w-54 px-4 font-semibold text-red-600 rounded-lg flex items-center border-gray-200 shadow-sm y-2"><img src="/icon/logout.svg" alt="" class="mr-4 w-9 h-9 "/> Logout</a>
         </div>   
 
