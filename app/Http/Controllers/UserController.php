@@ -19,10 +19,10 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
-        $request = $request->all();
-        if(Auth::attempt($request)){
-            $request->session()->generate();
-            return redirect('/dashboard');
+        $credential = $request->only('email','password');
+        if(Auth::attempt($credential)){
+            $request->session()->regenerate();
+            return redirect('/');
         }
 
         return redirect('/login');

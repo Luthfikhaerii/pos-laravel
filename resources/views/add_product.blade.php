@@ -12,7 +12,7 @@
 <body>
     <div class="flex min-h-screen">
         @include('components.sidebar')
-        <section class="w-full flex-1 flex flex-col">
+        <section class="ml-64 w-full flex-1 flex flex-col">
             <div class="h-20 flex items-center border-b-2 border-gray-200 w-full">
                 <p class="ml-8 text-2xl font-bold text-[#585A5C]">Add Product</p>
             </div>

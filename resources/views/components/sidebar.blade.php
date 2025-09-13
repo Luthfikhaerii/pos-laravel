@@ -1,5 +1,5 @@
-    <div class="w-64 border-r-2 border-gray-200 border-r-sm min-h-screen">
-        <p class="font-bold text-3xl text-center py-4 mb-10 mt-4">POS CAFFE</p>
+    <div class="w-64 fixed left-0 border-r-2 border-gray-200 border-r-sm min-h-screen">
+        <p class="font-bold text-[#4C81F1] text-3xl text-center py-4 mb-10 mt-4">POS CAFFE</p>
         <div class="w-full m-auto px-4"> 
         <a href="/" class="block py-3 mb-2 px-4 rounded-lg {{ request()->is('/') ? 'bg-[#4C81F1]' : '' }}">
             <div class="flex items-center">
@@ -32,6 +32,10 @@
                 <p class="ml-5 font-semibold text-base {{request()->is('report') ? 'text-white':'text-[#585A5C]'}}">Report</p>
             </div>   
         </a>
-        
+
         </div>
+        <div class="border-t-2 border-gray-300 bottom-0 absolute flex items-center justify-center w-64 h-24 py-2">
+            <a href="{{ route('logout_user')}}" class="py-2 w-54 px-4 font-semibold text-red-600 rounded-lg flex items-center border-gray-200 shadow-sm y-2"><img src="/icon/logout.svg" alt="" class="mr-4 w-9 h-9 "/> Logout</a>
+        </div>   
+
     </div>

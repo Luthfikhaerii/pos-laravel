@@ -15,7 +15,7 @@
 <body class="min-h-screen">
     <div class="flex min-h-screen">
         @include('components.sidebar')
-        <section class="flex-1 flex flex-col min-h-screen h-full">
+        <section class="ml-64 flex-1 flex flex-col min-h-screen h-full">
             <div class="h-20 flex items-center border-b-2 border-gray-200 w-full">
                 <p class="ml-8 text-2xl font-bold text-[#585A5C]">Report</p>
             </div>
