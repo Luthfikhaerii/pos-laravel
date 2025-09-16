@@ -15,6 +15,10 @@ use App\Http\Controllers\AddProductController;
 |
 */
 
+Route::get('/login', [App\Http\Controllers\UserController::class,'index'])->name('login');
+Route::post('/login_user', [App\Http\Controllers\UserController::class,'login'])->name('login_user');
+Route::get('/logout_user', [App\Http\Controllers\UserController::class,'logout'])->name('logout_user');
+
 
 //GROUP AUTH
 Route::middleware('auth.custom')->group(function(){
@@ -39,6 +43,12 @@ Route::middleware('auth.custom')->group(function(){
         return view('add_product');
     });
     Route::get('/edit_product/{id}', [App\Http\Controllers\ProductController::class,'edit']);
+
+        Route::get('/get_product',[App\Http\Controllers\ProductController::class,'get']);
+    Route::post('/add_product',[App\Http\Controllers\AddProductController::class,'create'])->name('add_product.create');
+    Route::put('/update_product/{id}',[App\Http\Controllers\ProductController::class,'update'])->name('product.update');
+    Route::get('/delete_product/{id}',[App\Http\Controllers\ProductController::class,'delete'])->name('product.delete');
+
 });
 
 

@@ -1,6 +1,6 @@
 <div class="bg-white shadow-sm w-72 h-80 rounded-lg m-4">
     
-    <img src="{{ asset('/storage/'.$image) }}" alt="image" class="w-64 h-44 m-auto mt-4 rounded-lg"/>
+    <img src="{{ Storage::url($image) }}" alt="image" class="w-64 h-44 m-auto mt-4 rounded-lg"/>
 
     <div class="flex justify-between items-center px-4 pt-2">
         <p class="text-lg text-gray-700 font-bold line-clamp-1">{{ $name }}</p>

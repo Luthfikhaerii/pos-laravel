@@ -35,14 +35,13 @@ class ProductController extends Controller
             $data['image'] = $product->image;
         }
         $product->update([
-            'name_product' => $data['name_product'],
-            'image' => $data['image'],
-            'category' => $data['category'],
-            'price' => $data['price'],
-            'stock' => $data['stock'],
+            'name_product' => $data['name_product'] ?? $product->name_product,
+            'image'        => $data['image'] ?? $product->image,
+            'category'     => $data['category'] ?? $product->category,
+            'price'        => $data['price'] ?? $product->price,
+            'stock'        => $data['stock'] ?? $product->stock,
         ]);
         return redirect('/edit_product/'.$id);
-
     }
 
     public function delete($id){
