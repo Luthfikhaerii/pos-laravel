@@ -15,7 +15,7 @@ class ProductController extends Controller
         }else if ($query=="food") {
             $data = Product::where('category','food')->orderBy('created_at','desc')->paginate(8);
         }else{
-          $data = Product::orderBy('created_at','desc')->paginate(8);
+            $data = Product::orderBy('created_at','desc')->paginate(8);
         }
         return view('product', compact('data'));
     }
