@@ -1,41 +1,72 @@
-    <div class="w-64 fixed left-0 border-r-2 border-gray-200 border-r-sm min-h-screen">
-        <p class="font-bold text-[#4C81F1] text-3xl text-center py-4 mb-10 mt-4">POS CAFFE</p>
-        <div class="w-full m-auto px-4"> 
-        <a href="/" class="block py-3 mb-2 px-4 rounded-lg {{ request()->is('/') ? 'bg-[#4C81F1]' : '' }}">
-            <div class="flex items-center">
-                    <img src="{{asset(request()->is('/') ? 'icon/subway_menu_active.svg':'icon/subway_menu.svg')}}" alt="icon" class="w-6 h-6 ml-[2px]"/>
-                <p class="ml-5 font-semibold text-base {{request()->is('/') ? 'text-white':'text-[#585A5C]'}}">Menu</p>
-            </div>   
-        </a>
-        <a href="/order" class="block py-3 mb-2 px-4 rounded-lg {{ request()->is('order') ? 'bg-[#4C81F1]' : '' }}">
-            <div class="flex items-center">
-                <img src="{{asset(request()->is('order') ? 'icon/lucide_square_white.svg':'icon/lucide_square-menu.svg')}}" alt="icon" class="w-7 h-7"/>
+@props([])
 
-                <p class="ml-5 font-semibold text-base {{request()->is('order') ? 'text-white':'text-[#585A5C]'}}">Order List</p>
-            </div>   
-        </a>
-        <a href="/history" class="block py-3 mb-2 px-4 rounded-lg {{ request()->is('history') ? 'bg-[#4C81F1]' : '' }}">
-            <div class="flex items-center">
-                <img src="{{asset(request()->is('history') ? 'icon/bxs_time_white.svg':'icon/bxs_time.svg')}}" alt="icon" class="w-7 h-7"/>
-                <p class="ml-5 font-semibold text-base {{request()->is('history') ? 'text-white':'text-[#585A5C]'}}">History</p>
-            </div>   
-        </a>
-        <a href="/product" class="block py-3 mb-2 px-4 rounded-lg {{ request()->is('product') || request()->is('add_product') ? 'bg-[#4C81F1]' : '' }}">
-            <div class="flex items-center">
-                <img src="{{asset(request()->is('product') || request()->is('add_product') ? 'icon/tdesign_menu_active.svg':'icon/tdesign_menu.svg')}}" alt="icon" class="w-7 h-7"/>
-                <p class="ml-5 font-semibold text-base {{request()->is('product') || request()->is('add_product') ? 'text-white':'text-[#585A5C]'}}">Product</p>
-            </div>   
-        </a>
-        <a href="/report" class="block py-3 mb-2 px-4 rounded-lg {{ request()->is('report') ? 'bg-[#4C81F1]' : '' }}">
-            <div class="flex items-center">
-                <img src="{{asset(request()->is('report') ? 'icon/mdi_report_white.svg':'icon/mdi_report-line.svg')}}" alt="icon" class="w-7 h-7"/>
-                <p class="ml-5 font-semibold text-base {{request()->is('report') ? 'text-white':'text-[#585A5C]'}}">Report</p>
-            </div>   
-        </a>
+@php
+    $menuItems = [
+        [
+            'title' => 'Menu',
+            'url' => '/',
+            'match' => '/',
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5M3.75 12h16.5m-16.5 6.75h16.5" /></svg>',
+        ],
+        [
+            'title' => 'Order List',
+            'url' => '/order',
+            'match' => 'order',
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3h9a2.25 2.25 0 012.25 2.25V21l-6.75-3.375L5.25 21V5.25A2.25 2.25 0 017.5 3z" /></svg>',
+        ],
+        [
+            'title' => 'History',
+            'url' => '/history',
+            'match' => 'history',
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
+        ],
+        [
+            'title' => 'Product',
+            'url' => '/product',
+            'match' => 'product',
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 6.75L12 3l7.5 3.75M4.5 6.75v10.5L12 21l7.5-3.75V6.75M4.5 6.75L12 10.5l7.5-3.75" /></svg>',
+        ],
+        [
+            'title' => 'Report',
+            'url' => '/report',
+            'match' => 'report',
+            'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h18v18H3V3zm3 14h3v-4H6v4zm6 0h3v-8h-3v8zm6 0h3v-12h-3v12z" /></svg>',
+        ],
+    ];
+@endphp
 
+<div class="w-64 fixed left-0 top-0 min-h-screen border-r-2 border-gray-200 flex flex-col justify-between bg-white">
+    <!-- Logo -->
+    <div>
+        <p class="font-bold text-[#4C81F1] text-3xl text-center py-6 mb-6">POS CAFFE</p>
+
+        <!-- Menu -->
+        <div class="px-4 space-y-1">
+            @foreach ($menuItems as $item)
+                @php
+                    $isActive = request()->is($item['match']) || request()->is($item['match'].'/*');
+                @endphp
+
+                <a href="{{ $item['url'] }}"
+                   class="flex items-center px-4 py-3 rounded-lg transition-all duration-150 
+                          {{ $isActive ? 'bg-[#4C81F1] text-white shadow-sm' : 'hover:bg-gray-100 text-gray-600' }}">
+                    <span class="mr-4">{!! $item['icon'] !!}</span>
+                    <p class="font-semibold text-sm">{{ $item['title'] }}</p>
+                </a>
+            @endforeach
         </div>
-        <div class="border-gray-300 bottom-0 absolute flex items-center justify-center w-64 h-24 py-2">
-            <a href="{{ route('logout_user')}}" class="py-2 w-54 px-4 font-semibold text-red-600 rounded-lg flex items-center border-gray-200 shadow-sm y-2"><img src="/icon/logout.svg" alt="" class="mr-4 w-9 h-9 "/> Logout</a>
-        </div>   
-
     </div>
+
+    <!-- Logout -->
+    <div class="border-t border-gray-200 py-4 flex items-center justify-center">
+        <a href="{{ route('logout_user') }}"
+           class="flex items-center px-4 py-2 text-red-600 font-semibold rounded-lg hover:bg-red-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24"
+                 stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6A2.25 2.25 0 005.25 5.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg>
+            Logout
+        </a>
+    </div>
+</div>

@@ -44,7 +44,8 @@ Route::middleware('auth.custom')->group(function(){
     });
     Route::get('/edit_product/{id}', [App\Http\Controllers\ProductController::class,'edit']);
 
-        Route::get('/get_product',[App\Http\Controllers\ProductController::class,'get']);
+    //PRODUCT
+    Route::get('/get_product',[App\Http\Controllers\ProductController::class,'get']);
     Route::post('/add_product',[App\Http\Controllers\AddProductController::class,'create'])->name('add_product.create');
     Route::put('/update_product/{id}',[App\Http\Controllers\ProductController::class,'update'])->name('product.update');
     Route::get('/delete_product/{id}',[App\Http\Controllers\ProductController::class,'delete'])->name('product.delete');
