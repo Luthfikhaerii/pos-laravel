@@ -1,3 +1,8 @@
+@php
+    function formatRupiah($angka) {
+        return number_format($angka, 0, ',', '.');
+    }
+@endphp
 <div class="bg-white shadow-sm w-80 h-screen fixed right-0 rounded-sm flex flex-col justify-between">
     <div class="p-4 mx-2 h-20 flex items-center">
         <h2 class="text-2xl mt-8 font-bold text-gray-600 text-center">Transaction</h2>
@@ -10,7 +15,7 @@
             <div class="w-28">
                 <p class="font-semibold text-sm text-gray-800 line-clamp-2">{{$item['name_product']}}</p>
                 {{-- <p class="text-xs text-gray-500 truncate">{{$item['category']}}</p> --}}
-                <p class="text-blue-500 text-xs font-semibold">Rp{{$item['price']}}</p>
+                <p class="text-blue-500 text-xs font-semibold">Rp{{ formatRupiah($item['price'])}}</p>
             </div>
             <div class="flex items-center space-x-2">
                 <span class="w-6 text-sm text-center font-medium">{{$item['amount']}}</span>

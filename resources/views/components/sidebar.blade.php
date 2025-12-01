@@ -38,7 +38,7 @@
 <div class="w-64 fixed left-0 top-0 min-h-screen border-r-2 border-gray-200 flex flex-col justify-between bg-white">
     <!-- Logo -->
     <div>
-        <p class="font-bold text-[#4C81F1] text-3xl text-center py-6 mb-6">POS CAFFE</p>
+        <p class="font-bold text-blue-600 text-3xl text-center py-6 mb-6">POS CAFFE</p>
 
         <!-- Menu -->
         <div class="px-4 space-y-1">

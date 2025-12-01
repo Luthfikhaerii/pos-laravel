@@ -28,11 +28,11 @@
                     <p class="text-center font-semibold m-auto ">Drink</p>
                 </a>
             </div>
-            <div class="bg-gray-100 w-full flex-1 px-4 pb-8">
-                <a class="flex items-center rounded-lg w-40 h-10 bg-[#4C81F1] justify-center shadow-sm mx-6 mt-4 cursor-pointer" href="{{ url('/add_product') }}">
+            <div class="bg-gray-100 w-full flex-1 px-4 pt-2 pb-8">
+                <a class="flex items-center rounded-lg w-40 h-10 bg-[#4C81F1] justify-center shadow-sm mx-2 mt-4 cursor-pointer" href="{{ url('/add_product') }}">
                     <p class="font-semibold text-white">+ Add Product</p>
                 </a>
-                <div class="flex flex-wrap">
+                <div class="flex flex-wrap mt-4">
                     @foreach ( $data as $item )
                         <x-card_product  price="{{ $item->price }}" name="{{ $item->name_product }}" editUrl="{{ $item->id }}"
                         deleteUrl="{{ $item->id }}" image="{{ $item->image }}" stock="{{ $item->stock }}" />

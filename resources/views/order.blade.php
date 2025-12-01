@@ -44,7 +44,10 @@
                             <p class="text-center font-semibold m-auto ">Canceled</p>
                         </a>
                     </div>
-                    @livewire('order-list')
+                    
+                        @livewire('order-list')
+                    
+                    
                 </div>
                 @livewire('order-detail')
                 
