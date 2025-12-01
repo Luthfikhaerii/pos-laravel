@@ -1,3 +1,8 @@
+@php
+    function formatRupiah($angka) {
+        return number_format($angka, 0, ',', '.');
+    }
+@endphp
 <div class="w-full flex flex-wrap mt-4 px-6 gap-x-5 gap-y-2 pr-80">
     
     @foreach ($data as $item)
@@ -8,7 +13,7 @@
             </div>
 
             <div class="flex justify-between items-center px-4 pt-1 pb-2">
-                <p class="font-semibold text-[#4C81F1]">Rp{{ $item->price }}</p>
+                <p class="font-semibold text-[#4C81F1]">Rp{{ formatRupiah($item->price) }}</p>
                 <p class="text-sm text-gray-500">Stock : {{ $item->stock }}</p>
             </div>
 
