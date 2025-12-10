@@ -1,8 +1,11 @@
 @php
-    function formatRupiah2($angka) {
-        return number_format($angka, 0, ',', '.');
+    if (!function_exists('formatRupiah2')) {
+        function formatRupiah2($angka) {
+            return number_format($angka, 0, ',', '.');
+        }
     }
 @endphp
+
 
 <div class="w-full mt-6 px-4 sm:px-4 lg:px-4">
     <div class="flex flex-wrap gap-4 justify-evenly">
