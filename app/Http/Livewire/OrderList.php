@@ -3,28 +3,47 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\Transaction;
 
 class OrderList extends Component
 {
-    public function addDetail($id, $transaction_item, $total_price, $amount_item, $created_at,$status){
-        return $this->emit('addToDetail',$id, $transaction_item, $total_price, $amount_item, $created_at,$status);
+    use WithPagination;
+
+    public $statusFilter = null;
+    
+    protected $queryString = [
+        'statusFilter' => ['except' => '', 'as' => 'status']
+    ];
+
+    public function mount()
+    {
+        // Set initial filter from query string
+        $this->statusFilter = request()->get('status');
+    }
+
+    public function addDetail($id, $transaction_item, $total_price, $amount_item, $created_at, $status)
+    {
+        return $this->emit('addToDetail', $id, $transaction_item, $total_price, $amount_item, $created_at, $status);
+    }
+
+    public function updatedStatusFilter()
+    {
+        // Reset pagination when filter changes
+        $this->resetPage();
     }
 
     public function render()
     {
-        $data = [];
-        if(request()->get('status')=='NEW ORDER'){
-            $data = Transaction::with('transaction_item')->where('status','NEW ORDER')->orderBy('created_at','desc')->paginate(12);
-        }else if(request()->get('status')=='ON COOK'){
-            $data = Transaction::with('transaction_item')->where('status','ON COOK')->orderBy('created_at','desc')->paginate(12);
-        }else if(request()->get('status')=='DONE'){
-            $data = Transaction::with('transaction_item')->where('status','DONE')->orderBy('created_at','desc')->paginate(12);
-        }else if(request()->get('status')=='CANCELED'){
-            $data = Transaction::with('transaction_item')->where('status','CANCELED')->orderBy('created_at','desc')->paginate(12);
-        }else{
-            $data = Transaction::with('transaction_item')->orderBy('created_at','desc')->paginate(12);
+        $query = Transaction::with('transaction_item')->orderBy('created_at', 'desc');
+        
+        // Apply filter if status is set
+        if ($this->statusFilter && $this->statusFilter !== '') {
+            $query->where('status', $this->statusFilter);
         }
-        return view('livewire.order-list',compact('data'));
+        
+        $data = $query->paginate(12);
+        
+        return view('livewire.order-list', compact('data'));
     }
 }

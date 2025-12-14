@@ -35,50 +35,49 @@
     ];
 @endphp
 
-<div class="w-64 fixed left-0 top-0 min-h-screen bg-white flex flex-col justify-between shadow-xl border-r border-gray-200">
+<div class="w-48 fixed left-0 top-0 min-h-screen bg-white flex flex-col justify-between shadow-lg border-r border-gray-200">
     <!-- Logo Section -->
     <div>
-        <div class="px-4 py-6 border-b border-gray-200">
-            <div class="flex items-center justify-center space-x-2 mb-1">
+        <div class="px-4 py-8 border-b border-gray-200">
+            <div class="flex items-center space-x-2">
                 <!-- Coffee Cup Icon -->
                 <div class="relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M2 21h18v-2H2v2zM20 8h-2V5h2c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2h-2c-1.66 0-3-1.34-3-3V5c0-1.66 1.34-3 3-3h2v2zm-4-2H6c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2z"/>
                     </svg>
-                    <div class="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                    <div class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
                 </div>
                 <div>
-                    <p class="font-bold text-gray-800 text-xl leading-tight">Caffé<span class="text-blue-600">Point</span></p>
-                    <p class="text-xs text-gray-500 font-medium">POS System</p>
+                    <p class="font-bold text-gray-800 text-xl leading-tight">Caffé<span class="text-blue-600 text-lg">Point</span></p>
                 </div>
             </div>
         </div>
 
         <!-- Menu Navigation -->
-        <nav class="px-3 py-4 space-y-1">
+        <nav class="px-2 py-3 space-y-1">
             @foreach ($menuItems as $item)
                 @php
                     $isActive = request()->is($item['match']) || request()->is($item['match'].'/*');
                 @endphp
 
                 <a href="{{ $item['url'] }}"
-                   class="group flex items-center px-4 py-2.5 rounded-lg transition-all duration-200 relative overflow-hidden
+                   class="group flex items-center px-3 py-2 rounded-lg transition-all duration-200 relative overflow-hidden
                           {{ $isActive 
-                             ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30' 
+                             ? 'bg-blue-600 text-white shadow-md shadow-blue-500/30' 
                              : 'text-gray-600 hover:bg-blue-50 hover:text-blue-600' }}">
                     
                     <!-- Active Indicator -->
                     @if($isActive)
-                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-blue-400 rounded-r-full"></div>
+                        <div class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-blue-400 rounded-r-full"></div>
                     @endif
                     
                     <!-- Icon -->
-                    <span class="mr-3 {{ $isActive ? 'scale-110' : 'group-hover:scale-110' }} transition-transform duration-200">
+                    <span class="mr-2.5 {{ $isActive ? 'scale-110' : 'group-hover:scale-110' }} transition-transform duration-200">
                         {!! $item['icon'] !!}
                     </span>
                     
                     <!-- Title -->
-                    <p class="font-semibold text-sm ml-2">{{ $item['title'] }}</p>
+                    <p class="font-semibold text-sm">{{ $item['title'] }}</p>
                     
                     <!-- Hover Effect -->
                     @if(!$isActive)
@@ -90,9 +89,9 @@
     </div>
 
     <!-- Logout Section -->
-    <div class="border-t border-gray-200 p-3">
+    <div class="border-t border-gray-200 p-2">
         <a href="{{ route('logout_user') }}"
-           class="group flex items-center justify-center px-3 py-2.5 text-red-600 font-semibold rounded-lg hover:bg-red-50 transition-all duration-200 relative overflow-hidden">
+           class="group flex items-center justify-center px-3 py-2 text-red-600 font-semibold rounded-lg hover:bg-red-50 transition-all duration-200 relative overflow-hidden">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24"
                  stroke-width="2" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -105,7 +104,7 @@
         </a>
         
         <!-- Version Info -->
-        <p class="text-center text-xs text-gray-400 mt-3">v1.0.0</p>
+        <p class="text-center text-xs text-gray-400 mt-2">v1.0.0</p>
     </div>
 </div>
 

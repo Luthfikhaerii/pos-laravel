@@ -14,7 +14,7 @@
 <body class="min-h-screen">
     <div class="flex min-h-screen">
         @include('components.sidebar')
-        <section class="ml-64 flex-1 flex flex-col min-h-screen h-full">
+        <section class="ml-56 flex-1 flex flex-col min-h-screen h-full">
 
             <div class="bg-gray-100 w-full flex-1 pb-8">
                 <div class="flex">
