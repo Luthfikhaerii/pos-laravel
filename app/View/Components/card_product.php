@@ -17,8 +17,9 @@ class card_product extends Component
     public $editUrl;
     public $deleteUrl;
     public $stock;
+    public $category;
 
-    public function __construct( String $name,String $price,String $image,  String $editUrl, String $deleteUrl, String $stock)
+    public function __construct( String $name,String $price,String $image,  String $editUrl, String $deleteUrl, String $stock, String $category)
     {
        $this->name = $name;
        $this->price = $price;
@@ -26,6 +27,7 @@ class card_product extends Component
        $this->editUrl = $editUrl;
        $this->deleteUrl = $deleteUrl;
        $this->stock = $stock;
+       $this->category = $category;
     }
 
     /**

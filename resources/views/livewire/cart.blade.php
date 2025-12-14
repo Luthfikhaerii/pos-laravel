@@ -1,4 +1,4 @@
-<div class="bg-white shadow-lg w-60 h-[90vh] fixed right-3 top-6 flex flex-col border border-gray-200 rounded-lg">
+<div class="bg-white shadow-lg z-20 w-60 h-[90vh] fixed right-3 top-6 flex flex-col border border-gray-200 rounded-lg">
 
     <!-- Header -->
     <div class="bg-gradient-to-r from-blue-600 to-blue-500 p-3 shadow-lg rounded-t-lg">

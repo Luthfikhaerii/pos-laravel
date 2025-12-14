@@ -13,28 +13,67 @@
 <body class="min-h-screen">
     <div class="flex min-h-screen">
         @include('components.sidebar')
-        <section class="ml-56 flex-1 flex flex-col min-h-screen h-full">
-            <div class="h-20 flex items-center border-b-2 border-gray-200 w-full">
-                <p class="ml-10 text-2xl font-bold text-[#585A5C]">Product List</p>
-            </div>
-            <div class="flex w-full pl-10">
-                <a class="w-36 h-14 flex items-center cursor-pointer category-1 {{ request()->query('category') == null ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product') }}">
-                    <p class="text-center font-semibold m-auto">All</p>
-                </a>
-                <a class="w-36 h-14 flex items-center cursor-pointer category-2 {{ request()->query('category') == 'food' ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product?category=food') }}">
-                    <p class="text-center font-semibold m-auto ">Food</p>
-                </a>
-                <a class="w-36 h-14 flex items-center cursor-pointer category-3 {{ request()->query('category') == 'drink' ? 'border-b-4 border-[#4C81F1] text-[#4C81F1]' : 'text-[#585A5C]'  }}" href="{{ url('/product?category=drink') }}">
-                    <p class="text-center font-semibold m-auto ">Drink</p>
-                </a>
-            </div>
-            <div class="bg-gray-100 w-full flex-1 px-4 pt-2 pb-8">
-                <a class="flex items-center rounded-lg w-40 h-10 bg-[#4C81F1] justify-center shadow-sm mx-2 mt-4 cursor-pointer" href="{{ url('/add_product') }}">
-                    <p class="font-semibold text-white">+ Add Product</p>
-                </a>
-                <div class="flex flex-wrap mt-4">
+        <section class="ml-48 flex-1 flex flex-col min-h-screen h-full">
+          <!-- Header Section -->
+            <header class="bg-white border-b border-gray-200 sticky top-0 z-10 shadow-sm pt-4">
+                <!-- Title Bar -->
+                <div class="h-16 flex items-center px-6 border-b border-gray-100">
+                    <div class="flex-1">
+                        <h1 class="text-xl font-bold text-gray-800">Product List</h1>
+                        <p class="text-xs text-gray-500">Manage your product inventory</p>
+                    </div>
+                    
+                    <!-- Add Product Button -->
+                    <a href="{{ url('/add_product') }}"
+                       class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold rounded-md transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-[1.02]"
+                       style="font-size: 12px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        <span>Add Product</span>
+                    </a>
+                </div>
+                
+                <!-- Category Tabs -->
+                <nav class="flex px-6 gap-1 overflow-x-auto">
+                    <a href="{{ url('/product') }}"
+                       class="group relative px-5 py-3 text-sm font-semibold whitespace-nowrap transition-all duration-200
+                              {{ request()->query('category') == null 
+                                 ? 'text-blue-600' 
+                                 : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50/30' }}">
+                        <span>All Products</span>
+                        @if(request()->query('category') == null)
+                            <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+                        @endif
+                    </a>
+                    
+                    <a href="{{ url('/product?category=food') }}"
+                       class="group relative px-5 py-3 text-sm font-semibold whitespace-nowrap transition-all duration-200
+                              {{ request()->query('category') == 'food' 
+                                 ? 'text-blue-600' 
+                                 : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50/30' }}">
+                        <span>Food</span>
+                        @if(request()->query('category') == 'food')
+                            <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+                        @endif
+                    </a>
+                    
+                    <a href="{{ url('/product?category=drink') }}"
+                       class="group relative px-5 py-3 text-sm font-semibold whitespace-nowrap transition-all duration-200
+                              {{ request()->query('category') == 'drink' 
+                                 ? 'text-blue-600' 
+                                 : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50/30' }}">
+                        <span>Drink</span>
+                        @if(request()->query('category') == 'drink')
+                            <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+                        @endif
+                    </a>
+                </nav>
+            </header>
+            <div class="bg-gray-100 w-full flex-1 p-6">
+                <div class="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 gap-4">
                     @foreach ( $data as $item )
-                        <x-card_product  price="{{ $item->price }}" name="{{ $item->name_product }}" editUrl="{{ $item->id }}"
+                        <x-card_product category="{{ $item->category }}" price="{{ $item->price }}" name="{{ $item->name_product }}" editUrl="{{ $item->id }}"
                         deleteUrl="{{ $item->id }}" image="{{ $item->image }}" stock="{{ $item->stock }}" />
                     @endforeach
                 </div>
